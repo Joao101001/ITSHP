@@ -10,99 +10,108 @@ var Contador;
 
 
 function App() {
-  
-  const [trafficlights, dispatch] = useReducer(Reducer, Data)
- 
 
-  const [trafficlightIndex, setTrafficlightIndex] = useState(0);
-  
+    const [trafficlights, dispatch] = useReducer(Reducer, Data)
 
-  useEffect(() => {
-    timer = setTimeout(() => {
-      dispatch({ trafficlightId: trafficlightIndex })
-      setTrafficlightIndex((trafficlightIndex + 1) % 3);
-    }, lightDurations[trafficlightIndex]);
-    return () => {
-      clearTimeout(timer);
-    };
-    
-  });
- 
- 
-function Detener() {
- tiempo();
-lightDurations = [7000,400,200];
 
- console.log(lightDurations);
- sleep(7000);
- lightDurations = [700, 400, 200];
- console.log(lightDurations);
+    const [trafficlightIndex, setTrafficlightIndex] = useState(0);
 
- }
- 
 
-  function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
-  function tiempo(){
-    if(age > 0){
-      setAge(age - 1);
+    useEffect(() => {
+        timer = setTimeout(() => {
+            dispatch({trafficlightId: trafficlightIndex})
+            setTrafficlightIndex((trafficlightIndex + 1) % 3);
+        }, lightDurations[trafficlightIndex]);
+        return () => {
+            clearTimeout(timer);
+        };
+
+    });
+
+var s=10;
+    function Detener() {
+         s=10;
+        lightDurations = [7000, 400, 200];
+        console.log(s);
     }
-    
-  }
- 
-   const [age, setAge] = React.useState(10);
+    var tme=10;
 
-  return (
-   <div>
-    <Fragment>
-     {
-       trafficlights.length > 0 && (
-        <div className='container'>
-          <div className='trafficlight-box'>
+    function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+
+        } while (currentDate - date < milliseconds);
+
+    }
+
+var a;
+
+
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [counter, setCounter] = React.useState(10);
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        React.useEffect(() => {
+            const timer =
+                counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+            return () => clearInterval(timer);
+        }, [counter]);
+        a = counter;
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return (
+
+        <Fragment>
             {
-              trafficlights.map((trafficlight) => {
-                 return <p key={trafficlight.id} id='trafficlight' style={{backgroundColor: trafficlight.light, opacity: trafficlightIndex === trafficlight.id ? 1 : 0.3, boxShadow: trafficlightIndex === trafficlight.id ? '1px 1px 10px rgba(204, 204, 204, 0.5), -1px -1px 10px rgba(204, 204, 204, 0.5)' : null}} >
-                 </p>
-              })
+                trafficlights.length > 0 && (
+                    <div className='container'>
+                        <div className='trafficlight-box'>
+                            {
+                                trafficlights.map((trafficlight) => {
+                                    return <p key={trafficlight.id} id='trafficlight' style={{
+                                        backgroundColor: trafficlight.light,
+                                        opacity: trafficlightIndex === trafficlight.id ? 1 : 0.3,
+                                        boxShadow: trafficlightIndex === trafficlight.id ? '1px 1px 10px rgba(204, 204, 204, 0.5), -1px -1px 10px rgba(204, 204, 204, 0.5)' : null
+                                    }}>
+                                    </p>
+                                })
+                            }
+
+                        </div>
+
+                        <br></br>
+                        <button onClick={Detener}>
+                            DETENER
+                        </button>
+
+
+                        <div>Tiempo para Cruzar: {a}s</div>
+
+                    </div>
+
+                )
             }
 
-          </div>
-<<<<<<< Updated upstream
-          <br></br>
-          <button onClick={Detener}>
-        DETENER
-      </button>
-<<<<<<< HEAD
-=======
-         
->>>>>>> Stashed changes
-=======
-      <h4>Tiempo para Cruzar: {age}s</h4>
->>>>>>> c6f943ebea277031976ed7ce6004f8bf6c2a3f73
-        </div>
-     
-      )
-      
-    }
-<<<<<<< Updated upstream
-    
-    </Fragment>
-     
-     
-   
-    
-=======
 
-    </Fragment>
-   </div>
->>>>>>> Stashed changes
-  );
+        </Fragment>
+    );
 }
+
+
 
 
 
