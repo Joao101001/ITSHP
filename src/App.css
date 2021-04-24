@@ -45,3 +45,16 @@ body {
   color: white;
   font-weight: bold;
 }
+
+footer{
+  margin-top: 215px;
+}
+
+.Logo {
+
+  background-image: url(./img/its.png);
+}
+.Logof {
+
+  background-image: url(./img/itsf.png);
+}
