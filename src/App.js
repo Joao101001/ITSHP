@@ -1,25 +1,59 @@
 import { useReducer, useEffect, useState, Fragment } from 'react'
-
 import './App.css';
 import Data from './Data'
 import Reducer from './Reducers/Trafficlight'
 
-function App() {
-  const [trafficlights, dispatch] = useReducer(Reducer, Data)
+var lightDurations = [700, 400, 200];
+var timer;
+var fechaHora = new Date();
+var Contador;
 
-  const lightDurations = [10000, 20, 10];
+function App() {
+  
+  const [trafficlights, dispatch] = useReducer(Reducer, Data)
+  
 
   const [trafficlightIndex, setTrafficlightIndex] = useState(0);
+  
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    timer = setTimeout(() => {
       dispatch({ trafficlightId: trafficlightIndex })
       setTrafficlightIndex((trafficlightIndex + 1) % 3);
     }, lightDurations[trafficlightIndex]);
     return () => {
       clearTimeout(timer);
     };
+    
   });
+ 
+ 
+function Detener() {
+ 
+lightDurations = [7000,400,200];
+
+ console.log(lightDurations);
+ sleep(7000);
+ lightDurations = [700, 400, 200];
+ console.log(lightDurations);
+
+ }
+ 
+
+  function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+  
+ 
+  
+
+
+  
+  
 
   return (
     <Fragment>
@@ -34,11 +68,25 @@ function App() {
               })
             }
           </div>
+          <br></br>
+          <button onClick={Detener}>
+        DETENER
+      </button>
         </div>
+     
       )
+      
     }
+    
     </Fragment>
+     
+     
+   
+    
   );
 }
+
+
+
 
 export default App;
