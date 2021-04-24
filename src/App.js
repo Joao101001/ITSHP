@@ -9,11 +9,13 @@ import Reducer from './Reducers/Trafficlight'
 
 var lightDurations = [700, 400, 200];
 var timer;
-var fechaHora = new Date();
-var Contador;
+
+
 
 
 function App() {
+
+    
 
     const [trafficlights, dispatch] = useReducer(Reducer, Data)
 
@@ -35,10 +37,10 @@ function App() {
     var s = 10;
 
     function Detener() {
+        setCounter(10);
         s = 10;
-        lightDurations = [7000, 400, 200];
-        lightDurations = [700, 400, 200];
-        console.log(s);
+        lightDurations = [1100, 400, 200];
+        
     }
 
     var tme = 10;
@@ -55,12 +57,17 @@ function App() {
 
     var a;
 
-    const [counter, setCounter] = React.useState(10);
+    const [counter, setCounter] = React.useState(0);
 
     React.useEffect(() => {
-        const timer =
+        if(counter > 0){
+            const timer =
             counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
         return () => clearInterval(timer);
+        }else{
+           lightDurations = [700, 400, 200];
+        }
+        
     }, [counter]);
     a = counter;
 
