@@ -56,6 +56,7 @@ lightDurations = [7000,400,200];
   
 
   return (
+   <div>
     <Fragment>
      {
        trafficlights.length > 0 && (
@@ -67,22 +68,33 @@ lightDurations = [7000,400,200];
                  </p>
               })
             }
+
           </div>
+<<<<<<< Updated upstream
           <br></br>
           <button onClick={Detener}>
         DETENER
       </button>
+=======
+         
+>>>>>>> Stashed changes
         </div>
      
       )
       
     }
+<<<<<<< Updated upstream
     
     </Fragment>
      
      
    
     
+=======
+
+    </Fragment>
+   </div>
+>>>>>>> Stashed changes
   );
 }
 

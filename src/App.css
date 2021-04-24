@@ -34,3 +34,14 @@ body {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+.btn-circle.btn-xl {
+  width: 150px;
+  height: 150px;
+  padding: 50px 16px;
+  margin-top: 80px;
+  font-size: 24px;
+  border-radius: 75px;
+  background-color: #b21f2d;
+  color: white;
+  font-weight: bold;
+}
