@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState, Fragment } from 'react'
+import React, { useReducer, useEffect, useState, Fragment } from 'react'
 import './App.css';
 import Data from './Data'
 import Reducer from './Reducers/Trafficlight'
@@ -8,10 +8,11 @@ var timer;
 var fechaHora = new Date();
 var Contador;
 
+
 function App() {
   
   const [trafficlights, dispatch] = useReducer(Reducer, Data)
-  
+ 
 
   const [trafficlightIndex, setTrafficlightIndex] = useState(0);
   
@@ -29,7 +30,7 @@ function App() {
  
  
 function Detener() {
- 
+ tiempo();
 lightDurations = [7000,400,200];
 
  console.log(lightDurations);
@@ -47,13 +48,14 @@ lightDurations = [7000,400,200];
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
   }
-  
+  function tiempo(){
+    if(age > 0){
+      setAge(age - 1);
+    }
+    
+  }
  
-  
-
-
-  
-  
+   const [age, setAge] = React.useState(10);
 
   return (
    <div>
@@ -75,9 +77,13 @@ lightDurations = [7000,400,200];
           <button onClick={Detener}>
         DETENER
       </button>
+<<<<<<< HEAD
 =======
          
 >>>>>>> Stashed changes
+=======
+      <h4>Tiempo para Cruzar: {age}s</h4>
+>>>>>>> c6f943ebea277031976ed7ce6004f8bf6c2a3f73
         </div>
      
       )
